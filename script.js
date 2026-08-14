@@ -32,7 +32,14 @@
     [79, 130, 137]
   ];
 
-  const createParticle = () => {
+  const clusterOffsets = [
+    [-62, -40],
+    [58, -34],
+    [-48, 54],
+    [62, 50]
+  ];
+
+  const createParticle = (index) => {
     const x = Math.random() * width;
     const y = Math.random() * height;
     return {
@@ -42,8 +49,11 @@
       homeY: y,
       vx: (Math.random() - 0.5) * 0.08,
       vy: (Math.random() - 0.5) * 0.08,
-      radius: 0.75 + Math.random() * 1.25,
+      radius: (width < 620 ? 1.2 : 1.45) + Math.random() * 1.65,
       drift: Math.random() * Math.PI * 2,
+      cluster: index % clusterOffsets.length,
+      clusterAngle: Math.random() * Math.PI * 2,
+      clusterRadius: 7 + Math.random() * 20,
       color: palette[Math.floor(Math.random() * palette.length)]
     };
   };
@@ -57,7 +67,7 @@
     context.setTransform(ratio, 0, 0, ratio, 0, 0);
 
     const count = width < 620 ? 42 : Math.min(82, Math.max(58, Math.round(width / 20)));
-    particles = Array.from({ length: count }, createParticle);
+    particles = Array.from({ length: count }, (_, index) => createParticle(index));
   };
 
   const scatterFromPointer = () => {
@@ -104,16 +114,22 @@
     particles.forEach((particle) => {
       particle.drift += 0.006;
 
+      const clusterScale = width < 620 ? 0.72 : 1;
+      const clusterOffset = clusterOffsets[particle.cluster];
+      const orbit = particle.clusterAngle + now * (0.00012 + particle.cluster * 0.000015);
+      const targetX = pointer.x + clusterOffset[0] * clusterScale + Math.cos(orbit) * particle.clusterRadius;
+      const targetY = pointer.y + clusterOffset[1] * clusterScale + Math.sin(orbit) * particle.clusterRadius;
+
       if (gathering) {
-        const dx = pointer.x - particle.x;
-        const dy = pointer.y - particle.y;
+        const dx = targetX - particle.x;
+        const dy = targetY - particle.y;
         const distance = Math.max(1, Math.hypot(dx, dy));
         const pull = 0.00022 + gatherProgress * 0.00058;
 
         particle.vx += dx * pull;
         particle.vy += dy * pull;
 
-        if (distance < 18) {
+        if (distance < particle.clusterRadius + 8) {
           particle.vx += (-dy / distance) * 0.018;
           particle.vy += (dx / distance) * 0.018;
         }
@@ -152,22 +168,22 @@
       if (particle.y < -15) particle.y = height + 15;
       if (particle.y > height + 15) particle.y = -15;
 
-      const distanceToPointer = pointer.active
-        ? Math.hypot(pointer.x - particle.x, pointer.y - particle.y)
+      const distanceToCluster = pointer.active
+        ? Math.hypot(targetX - particle.x, targetY - particle.y)
         : 999;
-      const nearPointer = gathering ? Math.max(0, 1 - distanceToPointer / 180) : 0;
-      const opacity = 0.11 + nearPointer * 0.13;
+      const nearCluster = gathering ? Math.max(0, 1 - distanceToCluster / 120) : 0;
+      const opacity = 0.12 + nearCluster * 0.15;
 
       context.beginPath();
-      context.arc(particle.x, particle.y, particle.radius + nearPointer * 0.45, 0, Math.PI * 2);
+      context.arc(particle.x, particle.y, particle.radius + nearCluster * 0.55, 0, Math.PI * 2);
       context.fillStyle = `rgba(${particle.color[0]}, ${particle.color[1]}, ${particle.color[2]}, ${opacity})`;
       context.fill();
 
-      if (gathering && distanceToPointer < 85) {
+      if (gathering && distanceToCluster < 62) {
         context.beginPath();
         context.moveTo(particle.x, particle.y);
-        context.lineTo(pointer.x, pointer.y);
-        context.strokeStyle = `rgba(72, 111, 146, ${(1 - distanceToPointer / 85) * 0.035})`;
+        context.lineTo(targetX, targetY);
+        context.strokeStyle = `rgba(72, 111, 146, ${(1 - distanceToCluster / 62) * 0.035})`;
         context.lineWidth = 0.5;
         context.stroke();
       }

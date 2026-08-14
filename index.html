@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#fbfcfd" />
-  <meta name="description" content="Nguyen Cong Dat is an AI researcher working on efficient and reliable generative models, diffusion language models, multimodal learning, and time-series forecasting." />
+  <meta name="description" content="Nguyen Cong Dat is an AI researcher working on diffusion language models and multimodal learning." />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Nguyen Cong Dat — Academic Homepage" />
-  <meta property="og:description" content="Research on efficient and reliable generative models." />
+  <meta property="og:description" content="Research on diffusion language models and multimodal learning." />
   <meta property="og:image" content="images/profile.JPG" />
   <meta property="og:url" content="https://katd2707.github.io/" />
   <title>Nguyen Cong Dat — AI Researcher</title>
@@ -64,7 +64,7 @@
           I work on <strong>efficient and reliable generative models</strong>. My research studies how to shorten diffusion inference, align training and inference, and preserve model quality under noisy supervision.
         </p>
         <p>
-          I am particularly interested in diffusion language models, multimodal learning, and time-series forecasting. I completed my bachelor's degree in Data Science and Artificial Intelligence at Hanoi University of Science and Technology.
+          I am particularly interested in diffusion language models and multimodal learning. I completed my bachelor's degree in Data Science and Artificial Intelligence at Hanoi University of Science and Technology.
         </p>
 
         <div class="profile-links" aria-label="Profile links">
@@ -106,25 +106,26 @@
 
       <div class="research-intro">
         <p>
-          My broader goal is to make generative models more practical: fewer inference steps, more predictable behavior, and better robustness when training data or test-time conditions are imperfect.
+          My broader goal is to make generative models more practical by improving how they reason across sequences and combine information from different modalities.
         </p>
       </div>
 
       <div class="research-topics">
         <article>
           <span>01</span>
-          <h3>Efficient diffusion</h3>
-          <p>Few-step inference for diffusion language models while retaining strong sequence-to-sequence performance.</p>
+          <h3>Diffusion language models</h3>
+          <p>Few-step generation and better training&ndash;inference alignment for efficient sequence-to-sequence models.</p>
+          <figure class="direction-figure">
+            <img src="images/direction-diffusion-language-model.png" alt="Abstract progression from scattered noisy tokens to an ordered sequence" width="1536" height="1024" loading="lazy" decoding="async" />
+          </figure>
         </article>
         <article>
           <span>02</span>
-          <h3>Reliable generation</h3>
-          <p>Lightweight guidance and model analysis for learning under noisy labels and contaminated data.</p>
-        </article>
-        <article>
-          <span>03</span>
-          <h3>Multimodal forecasting</h3>
-          <p>Scenario-level modeling for time series and multimodal data with diverse plausible futures.</p>
+          <h3>Multimodal learning</h3>
+          <p>Shared representations that connect visual, textual, and temporal signals while preserving their complementary structure.</p>
+          <figure class="direction-figure">
+            <img src="images/direction-multimodal-learning.png" alt="Visual, sequential, and temporal inputs converging into a shared representation" width="1536" height="1024" loading="lazy" decoding="async" />
+          </figure>
         </article>
       </div>
     </section>
@@ -146,6 +147,12 @@
             <p class="authors"><span class="author-mark">Dat Nguyen Cong</span>, Tung Kieu, Hoang Thanh-Tung</p>
             <p class="venue-name">Findings of the Association for Computational Linguistics, 2026</p>
             <div class="publication-links"><a href="https://arxiv.org/abs/2604.05551" target="_blank" rel="noopener noreferrer">paper</a></div>
+            <figure class="publication-pipeline">
+              <a href="images/Pipeline_fastdiss.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open the full FastDiSS pipeline as a PDF">
+                <img src="images/pipeline_fastdiss.png" alt="FastDiSS pipeline matching few-step and many-step diffusion language generation" width="1000" height="443" loading="lazy" decoding="async" />
+              </a>
+              <figcaption>FastDiSS method overview. <a href="images/Pipeline_fastdiss.pdf" target="_blank" rel="noopener noreferrer">View full-size pipeline</a></figcaption>
+            </figure>
           </div>
         </li>
 
@@ -156,6 +163,12 @@
             <p class="authors"><span class="author-mark">Dat Nguyen Cong</span>, Hieu Tran Bao, Hoang Thanh-Tung</p>
             <p class="venue-name">IEEE International Conference on Computer Vision, 2025</p>
             <div class="publication-links"><a href="https://arxiv.org/abs/2508.19581" target="_blank" rel="noopener noreferrer">paper</a></div>
+            <figure class="publication-pipeline">
+              <a href="images/pipeline_sbdc.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open the discriminator-correction pipeline as a PDF">
+                <img src="images/pipeline_sbdc.png" alt="Pipeline for correcting a noisy-label diffusion model using a score-based discriminator" width="2100" height="799" loading="lazy" decoding="async" />
+              </a>
+              <figcaption>Score-based discriminator correction overview. <a href="images/pipeline_sbdc.pdf" target="_blank" rel="noopener noreferrer">View full-size pipeline</a></figcaption>
+            </figure>
           </div>
         </li>
 
@@ -166,6 +179,12 @@
             <p class="authors">Luong Tran, Lan-Cuong Nguyen, Huynh Dang Nguyen, <span class="author-mark">Dat Nguyen Cong</span>, Dung D. Le, Van Nguyen</p>
             <p class="venue-name">International Conference on Learning Representations, 2026</p>
             <div class="publication-links"><a href="https://openreview.net/forum?id=RErUA45pI9" target="_blank" rel="noopener noreferrer">paper</a></div>
+            <figure class="publication-pipeline">
+              <a href="images/pipeline_clipfmoe.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open the CLIP-FMoE pipeline as a PDF">
+                <img src="images/pipeline_clipfmoe.png" alt="CLIP-FMoE pipeline with semantic clustering and specialized fused mixture-of-experts training" width="4170" height="1615" loading="lazy" decoding="async" />
+              </a>
+              <figcaption>CLIP-FMoE method overview. <a href="images/pipeline_clipfmoe.pdf" target="_blank" rel="noopener noreferrer">View full-size pipeline</a></figcaption>
+            </figure>
           </div>
         </li>
       </ol>
