@@ -3,195 +3,301 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nguyen Cong Dat - AI Resident</title>
-  <meta name="description" content="Nguyen Cong Dat - AI Resident at FPT AI Center. Research in generative models, diffusion models, and data mining." />
+  <meta name="theme-color" content="#080b0f" />
+  <meta name="description" content="Nguyen Cong Dat is an AI researcher working on efficient diffusion language models, reliable generative inference, multimodal learning, and time-series forecasting." />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Nguyen Cong Dat — AI Researcher" />
+  <meta property="og:description" content="Researching faster, more reliable generative models." />
+  <meta property="og:image" content="images/profile.jpg" />
+  <meta property="og:url" content="https://katd2707.github.io/" />
+  <title>Nguyen Cong Dat — AI Researcher</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;family=Space+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
+  <script>document.documentElement.classList.add('js');</script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Nguyen Cong Dat",
+    "url": "https://katd2707.github.io/",
+    "image": "https://katd2707.github.io/images/profile.jpg",
+    "email": "mailto:dat27072002@gmail.com",
+    "jobTitle": "AI Research Resident",
+    "affiliation": { "@type": "Organization", "name": "FPT Software AI Center" },
+    "alumniOf": { "@type": "CollegeOrUniversity", "name": "Hanoi University of Science and Technology" },
+    "sameAs": [
+      "https://github.com/katD2707",
+      "https://www.linkedin.com/in/%C4%91%E1%BA%A1t-nguy%E1%BB%85n-c%C3%B4ng-479453246/"
+    ]
+  }
+  </script>
 </head>
+
 <body>
-  <div class="wrapper">
-    <!-- Sidebar -->
-    <aside class="sidebar">
-      <div class="profile-card">
-        <div class="profile-image">
-          <img src="images/profile.jpg" alt="Nguyen Cong Dat" />
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <header class="site-header" data-header>
+    <a class="wordmark" href="#top" aria-label="Nguyen Cong Dat, home">
+      <span class="wordmark-mark">ND</span>
+      <span class="wordmark-name">Nguyen Cong Dat</span>
+    </a>
+
+    <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-navigation" data-menu-button>
+      <span class="menu-button-label">Menu</span>
+      <span class="menu-button-lines" aria-hidden="true"><i></i><i></i></span>
+    </button>
+
+    <nav class="site-nav" id="site-navigation" aria-label="Primary navigation" data-navigation>
+      <a href="#research">Research</a>
+      <a href="#publications">Publications</a>
+      <a href="#experience">Experience</a>
+      <a href="#about">About</a>
+    </nav>
+
+    <a class="header-contact" href="mailto:dat27072002@gmail.com">Let's talk <span aria-hidden="true">↗</span></a>
+  </header>
+
+  <main id="main-content">
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <canvas class="field-canvas" data-field-canvas aria-hidden="true"></canvas>
+      <div class="hero-glow hero-glow-one" aria-hidden="true"></div>
+      <div class="hero-glow hero-glow-two" aria-hidden="true"></div>
+
+      <div class="hero-copy" data-reveal>
+        <p class="eyebrow"><span class="status-dot"></span> AI researcher · Hanoi, Vietnam</p>
+        <h1 id="hero-title">From noisy data<br /><span>to reliable<br />generation.</span></h1>
+        <p class="hero-intro">
+          I'm Nguyen Cong Dat. I build generative models that arrive at better answers with fewer steps—across diffusion language models, multimodal learning, and time-series forecasting.
+        </p>
+
+        <div class="hero-actions">
+          <a class="button button-primary" href="#publications">Explore my work <span aria-hidden="true">↓</span></a>
+          <a class="button button-ghost" href="assets/Nguyen-Cong-Dat-CV.pdf" target="_blank" rel="noopener noreferrer">
+            Download CV
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2v10m0 0 4-4m-4 4L6 8M3 15v2h14v-2" /></svg>
+          </a>
         </div>
-        <h2 class="profile-name">Nguyen Cong Dat</h2>
-        <p class="profile-affiliation">AI Resident</p>
-        <p class="profile-institution"><a href="https://www.facebook.com/aic.fsoft" target="_blank">FPT AI Centre</a></p>
-        <div class="social-links">
-          <a href="mailto:dat.nc@example.com" title="Email"><i class="fas fa-envelope"></i></a>
-          <a href="https://github.com/pdt0609" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-          <a href="#" title="Google Scholar"><i class="ai ai-google-scholar"></i></a>
-        </div>
+
+        <dl class="hero-stats" aria-label="Career highlights">
+          <div><dt>03</dt><dd>peer-reviewed<br />publications</dd></div>
+          <div><dt>3.8</dt><dd>GPA<br />out of 4.0</dd></div>
+          <div><dt>ICCV</dt><dd>ICLR · ACL<br />2025—2026</dd></div>
+        </dl>
       </div>
-      <nav class="sidebar-nav">
-        <a href="#about-me">About Me</a>
-        <a href="#news">News</a>
-        <a href="#publications">Publications</a>
-      </nav>
-    </aside>
 
-    <!-- Main Content -->
-    <main class="content">
-      <!-- About Me -->
-      <section id="about-me" class="section">
-        <p class="bio">
-          I am an AI Resident at <a href="https://www.facebook.com/aic.fsoft" target="_blank">FPT AI Center</a>,
-          working under the supervision of <a href="#">Prof. Tung Kieu</a> and <a href="#">Prof. Tung Hoang-Thanh</a>.
-          I received my Bachelor's degree from <strong>HUST</strong> (Hanoi University of Science and Technology).
-          My research lies at the edge of generative models, expanding from computer vision, language model to data mining,
-          with a focus for efficient and timely problem.
-        </p>
-        <p class="bio">
-          I'm always open to collaborations, discussions, and new opportunities. Feel free to reach out if you're interested
-          in my research or would like to discuss potential projects.
-        </p>
-        <div class="research-interests">
-          <p>
-            <strong>Research:</strong> My research centers on efficiency and model analysis for generative models, typically Diffusion Models,
-            with particular emphasis on fast predictive model. I am also interested in frameworks related to the theoretical of time series analysis in data mining.
-          </p>
-          <p>
-            <strong>1. Reliable Inference.</strong> I develop guidance method for conditional generative models under different settings,
-            including learning with noisy labels, sequence-to-sequence generation, and anomaly prediction, aiming to bridge the gap with real-world adaptation.
-          </p>
-          <p>
-            <strong>2. Foundation Model.</strong> Currently, I am also interested in building compacted foundation model for time series forecasting,
-            that can generalize well on different data domain.
-          </p>
+      <div class="hero-visual" data-reveal>
+        <div class="portrait-frame">
+          <img src="images/profile.jpg" alt="Nguyen Cong Dat in Hanoi at night" width="1536" height="2048" />
+          <div class="portrait-wash" aria-hidden="true"></div>
+          <div class="portrait-grid" aria-hidden="true"></div>
+          <div class="portrait-label">
+            <span>AI Research Resident</span>
+            <strong>FPT AI Center</strong>
+          </div>
+          <div class="signal-badge" aria-hidden="true">
+            <span class="signal-bars"><i></i><i></i><i></i><i></i><i></i></span>
+            <span>noise → signal</span>
+          </div>
         </div>
-      </section>
+        <p class="portrait-note"><span>01</span> Making inference practical without making it ordinary.</p>
+      </div>
 
-      <!-- News -->
-      <section id="news" class="section">
-        <h2 class="section-title">🔥 News</h2>
-        <div class="news-list">
+      <div class="scroll-cue" aria-hidden="true"><span>Scroll to explore</span><i></i></div>
+    </section>
+
+    <div class="ticker" aria-label="Research interests">
+      <div class="ticker-track">
+        <span>Diffusion language models</span><i></i>
+        <span>Reliable inference</span><i></i>
+        <span>Multimodal learning</span><i></i>
+        <span>Time-series forecasting</span><i></i>
+        <span aria-hidden="true">Diffusion language models</span><i aria-hidden="true"></i>
+        <span aria-hidden="true">Reliable inference</span><i aria-hidden="true"></i>
+        <span aria-hidden="true">Multimodal learning</span><i aria-hidden="true"></i>
+        <span aria-hidden="true">Time-series forecasting</span><i aria-hidden="true"></i>
+      </div>
+    </div>
+
+    <section class="section research-section" id="research" aria-labelledby="research-title">
+      <div class="section-heading" data-reveal>
+        <p class="section-index">01 / Research</p>
+        <h2 id="research-title">Less compute.<br />More confidence.</h2>
+        <p>I study what happens between the first noisy guess and the final useful answer—and how to make that path shorter, safer, and easier to understand.</p>
+      </div>
+
+      <div class="research-grid">
+        <article class="research-card research-card-featured" data-reveal>
+          <div class="card-number">01</div>
+          <div class="card-visual steps-visual" aria-hidden="true">
+            <span style="--i: 0"></span><span style="--i: 1"></span><span style="--i: 2"></span><span style="--i: 3"></span><span style="--i: 4"></span><span style="--i: 5"></span>
+          </div>
+          <div>
+            <p class="card-kicker">Efficient inference</p>
+            <h3>Few steps, strong outputs.</h3>
+            <p>Compressing many-step diffusion language generation into practical few-step inference while preserving sequence-to-sequence quality.</p>
+          </div>
+        </article>
+
+        <article class="research-card" data-reveal>
+          <div class="card-number">02</div>
+          <div class="card-visual orbit-visual" aria-hidden="true"><i></i><i></i><b></b></div>
+          <div>
+            <p class="card-kicker">Reliable generation</p>
+            <h3>Robust, even when data isn't.</h3>
+            <p>Understanding contaminated training data and adding lightweight guidance that corrects generation with limited inference overhead.</p>
+          </div>
+        </article>
+
+        <article class="research-card" data-reveal>
+          <div class="card-number">03</div>
+          <div class="card-visual wave-visual" aria-hidden="true">
+            <svg viewBox="0 0 300 100" preserveAspectRatio="none"><path d="M0 64 C30 18, 65 20, 93 60 S152 102, 181 56 S239 10, 300 47" /><path d="M0 77 C38 49, 69 84, 107 51 S166 21, 202 64 S257 89, 300 55" /></svg>
+          </div>
+          <div>
+            <p class="card-kicker">Multimodal forecasting</p>
+            <h3>Many futures, modeled together.</h3>
+            <p>Scenario-level guidance and compact foundation models for time series that generalize across data domains.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section publications-section" id="publications" aria-labelledby="publications-title">
+      <div class="section-heading section-heading-row" data-reveal>
+        <div>
+          <p class="section-index">02 / Selected publications</p>
+          <h2 id="publications-title">Work in the wild.</h2>
+        </div>
+        <p>Peer-reviewed research spanning efficient generation, noisy-label robustness, and scalable vision-language systems.</p>
+      </div>
+
+      <div class="publication-list">
+        <article class="publication-card" data-reveal>
+          <div class="publication-meta"><span class="venue venue-acid">Findings of ACL 2026</span><span>First author</span></div>
+          <div class="publication-main">
+            <p class="publication-number">01</p>
+            <div>
+              <h3>FastDiSS: Few-step Match Many-step Diffusion Language Model on Sequence-to-Sequence Generation</h3>
+              <p class="authors"><strong>Dat Nguyen Cong</strong>, Tung Kieu, Hoang Thanh-Tung</p>
+              <p class="publication-summary">Distilling long diffusion trajectories into fewer generation steps for efficient sequence-to-sequence inference.</p>
+            </div>
+          </div>
+          <a class="paper-link" href="https://arxiv.org/abs/2604.05551" target="_blank" rel="noopener noreferrer" aria-label="Read FastDiSS on arXiv">Read paper <span aria-hidden="true">↗</span></a>
+        </article>
+
+        <article class="publication-card" data-reveal>
+          <div class="publication-meta"><span class="venue venue-cyan">ICCV 2025</span><span>First author</span></div>
+          <div class="publication-main">
+            <p class="publication-number">02</p>
+            <div>
+              <h3>Guiding Noisy Label Diffusion Models with Score-based Discriminator Correction</h3>
+              <p class="authors"><strong>Dat Nguyen Cong</strong>, Hieu Tran Bao, Hoang Thanh-Tung</p>
+              <p class="publication-summary">A lightweight post-training correction method for conditional diffusion models learned from noisy labels.</p>
+            </div>
+          </div>
+          <a class="paper-link" href="https://arxiv.org/abs/2508.19581" target="_blank" rel="noopener noreferrer" aria-label="Read the noisy-label diffusion paper on arXiv">Read paper <span aria-hidden="true">↗</span></a>
+        </article>
+
+        <article class="publication-card" data-reveal>
+          <div class="publication-meta"><span class="venue venue-violet">ICLR 2026</span><span>Co-author</span></div>
+          <div class="publication-main">
+            <p class="publication-number">03</p>
+            <div>
+              <h3>CLIP-FMoE: Scalable CLIP via Fused Mixture-of-Experts with Enforced Specialization</h3>
+              <p class="authors">Luong Tran, Lan-Cuong Nguyen, Huynh Dang Nguyen, <strong>Dat Nguyen Cong</strong>, Dung D. Le, Van Nguyen</p>
+              <p class="publication-summary">Scaling vision-language representation learning through fused experts with explicit specialization.</p>
+            </div>
+          </div>
+          <a class="paper-link" href="https://openreview.net/forum?id=RErUA45pI9" target="_blank" rel="noopener noreferrer" aria-label="Read CLIP-FMoE on OpenReview">Read paper <span aria-hidden="true">↗</span></a>
+        </article>
+      </div>
+
+      <div class="preprints" data-reveal>
+        <div class="preprints-heading"><p class="section-index">In progress</p><h3>Preprints &amp; submissions</h3></div>
+        <ol>
+          <li><span class="preprint-title">ScenarioDiff: A Scenario-level Guidance Framework for Multimodal Time Series Forecasting</span><span class="preprint-status">Under review · Equal contribution</span></li>
+          <li><span class="preprint-title">Balancing Fidelity and Diversity of Synthetic Data Representations in CLIP-based Few-Shot Learning</span><span class="preprint-status">Under review</span></li>
+          <li><a class="preprint-title" href="https://arxiv.org/abs/2502.10954" target="_blank" rel="noopener noreferrer">Learning to Stop Overthinking at Test Time <span aria-hidden="true">↗</span></a><span class="preprint-status">Preprint · Equal contribution</span></li>
+          <li><span class="preprint-title">On the Effect of Noisy Data in Diffusion Models</span><span class="preprint-status">Submitted · First author</span></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section experience-section" id="experience" aria-labelledby="experience-title">
+      <div class="section-heading" data-reveal>
+        <p class="section-index">03 / Experience</p>
+        <h2 id="experience-title">Learning by building.</h2>
+      </div>
+
+      <div class="timeline">
+        <article class="timeline-item" data-reveal>
+          <div class="timeline-date">Aug 2023 — Aug 2026</div><div class="timeline-dot" aria-hidden="true"></div>
+          <div class="timeline-content"><p class="timeline-type">Research</p><h3>AI Research Resident</h3><p class="timeline-place">FPT Software AI Center · Hanoi</p><p>Developed efficient diffusion-language inference, studied test-time overthinking, and designed guidance methods for models trained on contaminated data.</p></div>
+        </article>
+        <article class="timeline-item" data-reveal>
+          <div class="timeline-date">Jun 2023 — Feb 2024</div><div class="timeline-dot" aria-hidden="true"></div>
+          <div class="timeline-content"><p class="timeline-type">Engineering</p><h3>AI Engineer Intern</h3><p class="timeline-place">FPT Camera, FPT Telecom · Hanoi</p><p>Built real-time human tracking and counting for live camera streams, including an Android reporting prototype and deployment-focused error analysis.</p></div>
+        </article>
+        <article class="timeline-item" data-reveal>
+          <div class="timeline-date">Dec 2021 — Aug 2024</div><div class="timeline-dot" aria-hidden="true"></div>
+          <div class="timeline-content"><p class="timeline-type">Academic research</p><h3>Research Assistant</h3><p class="timeline-place">Data Science Laboratory, BKAI, HUST</p><p>Researched medical anomaly reconstruction, diffusion guidance, optimal transport for sequence alignment, and stable hyperparameter optimization.</p></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section about-section" id="about" aria-labelledby="about-title">
+      <div class="about-intro" data-reveal>
+        <p class="section-index">04 / Beyond the papers</p>
+        <h2 id="about-title">Built on curiosity.<br />Grounded in math.</h2>
+        <p>I trained in Data Science and Artificial Intelligence at HUST, where a physics background grew into an interest in the mechanics of learning systems. I care about research that survives contact with real constraints: imperfect labels, limited compute, and changing data.</p>
+      </div>
+
+      <div class="credential-grid">
+        <article class="credential-card education-card" data-reveal>
+          <p class="card-kicker">Education</p><span class="credential-year">2020—2024</span><h3>B.A. in Data Science &amp; Artificial Intelligence</h3><p>Hanoi University of Science and Technology</p><strong>GPA 3.8 / 4.0</strong>
+        </article>
+
+        <article class="credential-card awards-card" data-reveal>
+          <p class="card-kicker">Recognition</p>
           <ul>
-            <li>
-              <span class="news-date">Feb 2026</span>
-              <span class="news-text">🎉 <a href="https://github.com/pdt0609/Minion" target="_blank">ICCL</a> accepted at <em>ICLR 2026</em>!</span>
-            </li>
-            <li>
-              <span class="news-date">Mar 2025</span>
-              <span class="news-text">🎉 <a href="https://github.com/pdt0609/Minion" target="_blank">SBDC</a> accepted at <em>ICCV 2025</em>!</span>
-            </li>
-            <li>
-              <span class="news-date">Sep 2024</span>
-              <span class="news-text">🏆 Awarded <em>Best Presentation Award (BPA)</em> at the thesis defense council.</span>
-            </li>
+            <li><span>2024</span><p><strong>Best Presentation Award</strong><br />Thesis defense, HUST</p></li>
+            <li><span>2019</span><p><strong>Third Prize</strong><br />Vietnamese National Physics Olympiad</p></li>
+            <li><span>2019</span><p><strong>Gold Medal</strong><br />Regional Physics Contest</p></li>
           </ul>
-        </div>
-      </section>
+        </article>
 
-      <!-- Publications -->
-      <section id="publications" class="section">
-        <h2 class="section-title">📝 Publications</h2>
+        <article class="credential-card service-card" data-reveal>
+          <p class="card-kicker">Community &amp; tools</p>
+          <div class="service-row"><span>Reviewer</span><strong>ICML 2026 · NeurIPS 2026</strong></div>
+          <div class="service-row"><span>Languages</span><strong>Vietnamese · English (IELTS 7.0)</strong></div>
+          <div class="skill-cloud" aria-label="Technical skills"><span>Python</span><span>PyTorch</span><span>Hugging Face</span><span>Java</span><span>Statistics</span><span>Machine Learning</span></div>
+        </article>
+      </div>
+    </section>
 
-        <!-- Publication 1 -->
-        <div class="publication-item">
-          <div class="pub-venue-badge">ICLR 2026</div>
-          <div class="pub-content">
-            <h3 class="pub-title">
-              <a href="https://github.com/pdt0609/Minion" target="_blank">CLIP-FMoE: Scalable CLIP via Fused Mixture-of-Experts with Enforced Specialization</a>
-            </h3>
-            <p class="pub-authors">
-              Luong Tran, Lan-Cuong Nguyen, Huynh Dang Nguyen, <strong>Dat Nguyen Cong</strong>, Dung D. Le, Van Nguyen
-            </p>
-            <p class="pub-venue">International Conference on Learning Representations, 2026</p>
-            <div class="pub-links">
-              <a href="https://github.com/pdt0609/Minion" target="_blank"><i class="fas fa-file-pdf"></i> PDF</a>
-              <a href="https://github.com/pdt0609/Minion" target="_blank"><i class="fab fa-github"></i> Code</a>
-            </div>
-          </div>
-        </div>
+    <section class="contact-section" aria-labelledby="contact-title">
+      <div class="contact-orbit" aria-hidden="true"><i></i><i></i><i></i></div>
+      <p class="section-index">05 / Contact</p>
+      <h2 id="contact-title">Have an interesting<br />problem in mind?</h2>
+      <a href="mailto:dat27072002@gmail.com" class="contact-email">dat27072002@gmail.com <span aria-hidden="true">↗</span></a>
+      <p>I'm always open to research conversations and thoughtful collaborations.</p>
+    </section>
+  </main>
 
-        <!-- Publication 2 -->
-        <div class="publication-item">
-          <div class="pub-venue-badge preprint">Under Rev.</div>
-          <div class="pub-content">
-            <h3 class="pub-title">
-              <a href="https://github.com/pdt0609/Minion" target="_blank">FastDiSS: Few-step Match Many-step Diffusion Language Model on Sequence-to-Sequence Generation</a>
-            </h3>
-            <p class="pub-authors">
-              <strong>Nguyen Cong Dat</strong>, Tung Kieu, Hoang Thanh-Tung
-            </p>
-            <p class="pub-venue">Submission under Review, 2025</p>
-            <div class="pub-links">
-              <a href="https://github.com/pdt0609/Minion" target="_blank"><i class="fas fa-file-pdf"></i> PDF</a>
-              <a href="https://github.com/pdt0609/Minion" target="_blank"><i class="fab fa-github"></i> Code</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Publication 3 -->
-        <div class="publication-item">
-          <div class="pub-venue-badge preprint">Preprint</div>
-          <div class="pub-content">
-            <h3 class="pub-title">
-              <a href="https://github.com/pdt0609/Minion" target="_blank">Learning to Stop Overthinking at Test Time</a>
-            </h3>
-            <p class="pub-authors">
-              Hieu Tran Bao, <strong>Nguyen Cong Dat</strong>, Nguyen Duc Anh, Hoang Thanh-Tung
-            </p>
-            <p class="pub-venue">Preprint, 2025</p>
-            <div class="pub-links">
-              <a href="https://github.com/pdt0609/Minion" target="_blank"><i class="fas fa-file-pdf"></i> PDF</a>
-              <a href="https://github.com/pdt0609/Minion" target="_blank"><i class="fab fa-github"></i> Code</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Publication 4 -->
-        <div class="publication-item">
-          <div class="pub-venue-badge">ICCV 2025</div>
-          <div class="pub-content">
-            <h3 class="pub-title">
-              <a href="https://github.com/pdt0609/Minion" target="_blank">Guiding Noisy Label Conditional Diffusion Models with Score-based Discriminator Correction</a>
-            </h3>
-            <p class="pub-authors">
-              <strong>Dat Nguyen-Cong</strong>, Hieu Tran Bao, Hoang Thanh-Tung
-            </p>
-            <p class="pub-venue">IEEE International Conference on Computer Vision, 2025</p>
-            <div class="pub-links">
-              <a href="https://github.com/pdt0609/Minion" target="_blank"><i class="fas fa-file-pdf"></i> PDF</a>
-              <a href="https://github.com/pdt0609/Minion" target="_blank"><i class="fab fa-github"></i> Code</a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Honors and Awards -->
-      <section id="honors" class="section">
-        <h2 class="section-title">🎖 Honors and Awards</h2>
-        <ul class="awards-list">
-          <li>
-            <span class="award-year">2024</span>
-            <span>Best Presentation Award (BPA) at the thesis defense council.</span>
-          </li>
-        </ul>
-      </section>
-
-      <!-- Education -->
-      <section id="education" class="section">
-        <h2 class="section-title">📖 Education</h2>
-        <ul class="education-list">
-          <li>
-            <span class="edu-year">2019 – 2024</span>
-            <span>Bachelor's Degree, <strong>Hanoi University of Science and Technology (HUST)</strong></span>
-          </li>
-        </ul>
-      </section>
-
-    </main>
-  </div>
-
-  <footer class="footer">
-    <p>&copy; 2026 Nguyen Cong Dat. Powered by GitHub Pages.</p>
+  <footer class="site-footer">
+    <a class="footer-mark" href="#top">ND</a>
+    <p>© <span data-year>2026</span> Nguyen Cong Dat. Designed around signal, noise &amp; curiosity.</p>
+    <div class="footer-links">
+      <a href="https://github.com/katD2707" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+      <a href="https://www.linkedin.com/in/%C4%91%E1%BA%A1t-nguy%E1%BB%85n-c%C3%B4ng-479453246/" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a>
+      <a href="assets/Nguyen-Cong-Dat-CV.pdf" target="_blank" rel="noopener noreferrer">CV <span aria-hidden="true">↗</span></a>
+    </div>
   </footer>
+
+  <script src="script.js" defer></script>
 </body>
 </html>
