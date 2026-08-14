@@ -15,6 +15,7 @@
   let frameId = 0;
   let particles = [];
   let pageVisible = true;
+  const speedMultiplier = 1.2;
 
   const pointer = {
     x: 0,
@@ -26,10 +27,11 @@
     speed: 0
   };
 
-  const palette = [
-    [59, 101, 145],
-    [91, 123, 151],
-    [79, 130, 137]
+  const clusterPalettes = [
+    [[48, 91, 139], [70, 111, 157], [96, 133, 170]],
+    [[48, 112, 116], [72, 134, 133], [99, 151, 143]],
+    [[99, 82, 148], [122, 104, 166], [145, 128, 183]],
+    [[139, 83, 106], [158, 106, 125], [176, 130, 144]]
   ];
 
   const clusterOffsets = [
@@ -39,9 +41,21 @@
     [62, 50]
   ];
 
+  const clusterShapes = ['circle', 'square', 'diamond', 'triangle'];
+
+  const gaussianRandom = () => {
+    const u = Math.max(Number.EPSILON, Math.random());
+    const v = Math.max(Number.EPSILON, Math.random());
+    return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v);
+  };
+
+  const clamp = (value, minimum, maximum) => Math.min(maximum, Math.max(minimum, value));
+
   const createParticle = (index) => {
     const x = Math.random() * width;
     const y = Math.random() * height;
+    const cluster = index % clusterOffsets.length;
+    const palette = clusterPalettes[cluster];
     return {
       x,
       y,
@@ -49,13 +63,40 @@
       homeY: y,
       vx: (Math.random() - 0.5) * 0.08,
       vy: (Math.random() - 0.5) * 0.08,
-      radius: (width < 620 ? 1.2 : 1.45) + Math.random() * 1.65,
+      radius: (width < 620 ? 3.6 : 4.35) + Math.random() * 4.95,
       drift: Math.random() * Math.PI * 2,
-      cluster: index % clusterOffsets.length,
+      cluster,
+      shape: clusterShapes[cluster],
+      roundness: 1,
       clusterAngle: Math.random() * Math.PI * 2,
       clusterRadius: 7 + Math.random() * 20,
+      spreadX: x,
+      spreadY: y,
       color: palette[Math.floor(Math.random() * palette.length)]
     };
+  };
+
+  const setGaussianSpread = (originX, originY) => {
+    const sigmaX = Math.max(180, width * 0.34);
+    const sigmaY = Math.max(150, height * 0.32);
+
+    particles.forEach((particle) => {
+      let targetX = originX;
+      let targetY = originY;
+      let attempts = 0;
+
+      do {
+        targetX = originX + clamp(gaussianRandom(), -2.35, 2.35) * sigmaX;
+        targetY = originY + clamp(gaussianRandom(), -2.35, 2.35) * sigmaY;
+        attempts += 1;
+      } while (
+        attempts < 16 &&
+        (targetX < 18 || targetX > width - 18 || targetY < 18 || targetY > height - 18)
+      );
+
+      particle.spreadX = clamp(targetX, 18, width - 18);
+      particle.spreadY = clamp(targetY, 18, height - 18);
+    });
   };
 
   const resize = () => {
@@ -66,8 +107,9 @@
     canvas.height = Math.round(height * ratio);
     context.setTransform(ratio, 0, 0, ratio, 0, 0);
 
-    const count = width < 620 ? 42 : Math.min(82, Math.max(58, Math.round(width / 20)));
+    const count = width < 620 ? 96 : Math.min(210, Math.max(144, Math.round(width / 8)));
     particles = Array.from({ length: count }, (_, index) => createParticle(index));
+    setGaussianSpread(width / 2, height / 2);
   };
 
   const scatterFromPointer = () => {
@@ -87,6 +129,7 @@
   const handlePointerMove = (event) => {
     const now = performance.now();
     const elapsed = Math.max(8, now - pointer.lastMove);
+    const beginningSpread = !pointer.active || now - pointer.lastMove > 190;
 
     pointer.previousX = pointer.x;
     pointer.previousY = pointer.y;
@@ -96,12 +139,49 @@
     pointer.lastMove = now;
     pointer.active = true;
 
+    if (beginningSpread) setGaussianSpread(pointer.x, pointer.y);
     scatterFromPointer();
   };
 
   const releasePointer = () => {
     pointer.active = false;
     pointer.speed = 0;
+  };
+
+  const tracePolygon = (particle, radius, sides, rotation) => {
+    context.beginPath();
+    for (let index = 0; index < sides; index += 1) {
+      const angle = rotation + index * Math.PI * 2 / sides;
+      const x = particle.x + Math.cos(angle) * radius;
+      const y = particle.y + Math.sin(angle) * radius;
+      if (index === 0) context.moveTo(x, y);
+      else context.lineTo(x, y);
+    }
+    context.closePath();
+  };
+
+  const drawParticle = (particle, radius, opacity) => {
+    const color = `${particle.color[0]}, ${particle.color[1]}, ${particle.color[2]}`;
+
+    if (particle.shape === 'circle' || particle.roundness > 0.01) {
+      context.beginPath();
+      context.arc(particle.x, particle.y, radius, 0, Math.PI * 2);
+      const circleOpacity = particle.shape === 'circle' ? opacity : opacity * particle.roundness;
+      context.fillStyle = `rgba(${color}, ${circleOpacity})`;
+      context.fill();
+    }
+
+    if (particle.shape === 'circle' || particle.roundness >= 0.99) return;
+
+    if (particle.shape === 'triangle') {
+      tracePolygon(particle, radius * 1.15, 3, -Math.PI / 2);
+    } else {
+      const rotation = particle.shape === 'square' ? Math.PI / 4 : 0;
+      tracePolygon(particle, radius, 4, rotation);
+    }
+
+    context.fillStyle = `rgba(${color}, ${opacity * (1 - particle.roundness)})`;
+    context.fill();
   };
 
   const draw = (now) => {
@@ -134,9 +214,11 @@
           particle.vy += (dx / distance) * 0.018;
         }
       } else {
-        const homePull = pointer.active ? 0.00018 : 0.00055;
-        particle.vx += (particle.homeX - particle.x) * homePull;
-        particle.vy += (particle.homeY - particle.y) * homePull;
+        const destinationX = pointer.active ? particle.spreadX : particle.homeX;
+        const destinationY = pointer.active ? particle.spreadY : particle.homeY;
+        const destinationPull = pointer.active ? 0.00072 : 0.00055;
+        particle.vx += (destinationX - particle.x) * destinationPull;
+        particle.vy += (destinationY - particle.y) * destinationPull;
         particle.vx += Math.cos(particle.drift) * 0.002;
         particle.vy += Math.sin(particle.drift) * 0.002;
 
@@ -160,8 +242,8 @@
         particle.vy = (particle.vy / velocity) * 4.5;
       }
 
-      particle.x += particle.vx;
-      particle.y += particle.vy;
+      particle.x += particle.vx * speedMultiplier;
+      particle.y += particle.vy * speedMultiplier;
 
       if (particle.x < -15) particle.x = width + 15;
       if (particle.x > width + 15) particle.x = -15;
@@ -172,18 +254,16 @@
         ? Math.hypot(targetX - particle.x, targetY - particle.y)
         : 999;
       const nearCluster = gathering ? Math.max(0, 1 - distanceToCluster / 120) : 0;
-      const opacity = 0.12 + nearCluster * 0.15;
-
-      context.beginPath();
-      context.arc(particle.x, particle.y, particle.radius + nearCluster * 0.55, 0, Math.PI * 2);
-      context.fillStyle = `rgba(${particle.color[0]}, ${particle.color[1]}, ${particle.color[2]}, ${opacity})`;
-      context.fill();
+      const opacity = 0.075 + nearCluster * 0.16;
+      const roundnessTarget = gathering ? 0 : 1;
+      particle.roundness += (roundnessTarget - particle.roundness) * 0.055;
+      drawParticle(particle, particle.radius + nearCluster * 0.55, opacity);
 
       if (gathering && distanceToCluster < 62) {
         context.beginPath();
         context.moveTo(particle.x, particle.y);
         context.lineTo(targetX, targetY);
-        context.strokeStyle = `rgba(72, 111, 146, ${(1 - distanceToCluster / 62) * 0.035})`;
+        context.strokeStyle = `rgba(${particle.color[0]}, ${particle.color[1]}, ${particle.color[2]}, ${(1 - distanceToCluster / 62) * 0.035})`;
         context.lineWidth = 0.5;
         context.stroke();
       }
