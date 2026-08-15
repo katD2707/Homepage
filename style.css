@@ -171,7 +171,7 @@ ul {
 .portrait {
   position: relative;
   width: 190px;
-  height: 225px;
+  height: 320px;
   overflow: hidden;
   background: #e9edf0;
   border: 1px solid var(--line-dark);
@@ -191,10 +191,8 @@ ul {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 53% 72%;
+  object-position: 50% 50%;
   filter: saturate(0.82) contrast(1.02);
-  transform: scale(1.58);
-  transform-origin: 53% 72%;
 }
 
 .academic-role,
@@ -653,7 +651,7 @@ ul {
 
   .portrait {
     width: 160px;
-    height: 190px;
+    height: 270px;
   }
 
   .research-topics {
@@ -697,7 +695,7 @@ ul {
 
   .portrait {
     width: 145px;
-    height: 172px;
+    height: 258px;
   }
 
   .intro h1 {
