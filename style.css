@@ -391,8 +391,15 @@ ul {
   align-items: end;
 }
 
-.publications-heading > p {
-  justify-self: end;
+.publications-title-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.authorship-note {
+  flex: 0 0 auto;
   margin-bottom: 0.1rem;
   color: var(--soft-muted);
   font-size: 0.68rem;
@@ -726,7 +733,7 @@ ul {
     gap: 0.8rem;
   }
 
-  .publications-heading > p {
+  .authorship-note {
     display: none;
   }
 
