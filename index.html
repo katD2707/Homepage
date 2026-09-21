@@ -3,15 +3,35 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#fbfcfd" />
-  <meta name="description" content="Nguyen Cong Dat is an AI researcher working on diffusion language models and multimodal learning." />
+  <meta name="theme-color" content="#f6f4f2" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#100f0e" media="(prefers-color-scheme: dark)" />
+  <meta name="description" content="Nguyen Cong Dat is an AI researcher working on diffusion language models, multimodal learning, and time series analysis." />
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Nguyen Cong Dat — Academic Homepage" />
-  <meta property="og:description" content="Research on diffusion language models and multimodal learning." />
-  <meta property="og:image" content="images/profile.jpg" />
+  <meta property="og:title" content="Nguyen Cong Dat — AI Researcher" />
+  <meta property="og:description" content="Research on diffusion language models, multimodal learning, and time series analysis." />
+  <meta property="og:image" content="https://katd2707.github.io/images/profile.jpg" />
   <meta property="og:url" content="https://katd2707.github.io/" />
   <title>Nguyen Cong Dat — AI Researcher</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=Inter:wght@400;450;500;600&family=JetBrains+Mono:wght@400;500&display=swap" />
   <link rel="stylesheet" href="style.css" />
+
+  <script>
+    // Applied before paint so the page never flashes the wrong theme.
+    (() => {
+      // Reveal animations only apply when scripting is on, so the page is
+      // never left blank if script.js fails to load.
+      document.documentElement.classList.add('js');
+      try {
+        const saved = localStorage.getItem('theme');
+        if (saved === 'dark' || saved === 'light') {
+          document.documentElement.dataset.theme = saved;
+        }
+      } catch (error) { /* storage unavailable */ }
+    })();
+  </script>
 
   <script type="application/ld+json">
   {
@@ -24,6 +44,7 @@
     "jobTitle": "AI Research Resident",
     "affiliation": { "@type": "Organization", "name": "FPT Software AI Center" },
     "alumniOf": { "@type": "CollegeOrUniversity", "name": "Hanoi University of Science and Technology" },
+    "knowsAbout": ["Diffusion language models", "Multimodal learning", "Time series analysis", "Generative models"],
     "sameAs": [
       "https://github.com/katD2707",
       "https://www.linkedin.com/in/%C4%91%E1%BA%A1t-nguy%E1%BB%85n-c%C3%B4ng-479453246/"
@@ -34,58 +55,107 @@
 
 <body>
   <canvas class="diffusion-canvas" data-diffusion-canvas aria-hidden="true"></canvas>
+  <div class="grain" aria-hidden="true"></div>
   <a class="skip-link" href="#main-content">Skip to content</a>
 
   <header class="site-header">
-    <div class="header-inner">
-      <a class="site-name" href="#about">Nguyen Cong Dat</a>
-      <nav class="site-nav" aria-label="Primary navigation">
+    <div class="header-rail">
+      <a class="site-name" href="#about">
+        <span class="site-mark" aria-hidden="true"></span>
+        Nguyen Cong Dat
+      </a>
+
+      <nav class="site-nav" aria-label="Primary">
         <a href="#about">About</a>
         <a href="#news">News</a>
         <a href="#research">Research</a>
         <a href="#publications">Publications</a>
         <a href="#background">Background</a>
       </nav>
+
+      <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark theme" aria-pressed="false">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="4.2" />
+          <path d="M12 2.6v2.2M12 19.2v2.2M2.6 12h2.2M19.2 12h2.2M5.4 5.4l1.6 1.6M17 17l1.6 1.6M18.6 5.4 17 7M7 17l-1.6 1.6" />
+        </svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M20 14.2A8.4 8.4 0 0 1 9.8 4a8.4 8.4 0 1 0 10.2 10.2Z" />
+        </svg>
+      </button>
     </div>
   </header>
 
   <main id="main-content" class="page-shell">
-    <section class="intro" id="about" aria-labelledby="page-title">
-      <div class="portrait" aria-label="Portrait of Nguyen Cong Dat">
-        <img src="images/profile.jpg" alt="Nguyen Cong Dat" width="1536" height="2048" />
-      </div>
 
-      <div class="intro-copy">
-        <p class="academic-role">AI Research Resident · FPT Software AI Center</p>
+    <!-- ── Hero ─────────────────────────────────────────────── -->
+    <section class="hero" id="about" aria-labelledby="page-title">
+      <div class="hero-copy" data-reveal>
+        <p class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span>AI Research Resident · FPT Software AI Center</p>
+
         <h1 id="page-title">Nguyen Cong Dat</h1>
         <p class="pronunciation">Nguyễn Công Đạt</p>
 
         <p class="lead">
-          I work on <strong>efficient and reliable generative models</strong>. My research studies how to shorten diffusion inference, align training and inference, and preserve model quality under noisy supervision.
+          I work on <strong>efficient and reliable generative models</strong> — shortening diffusion
+          inference, aligning training with inference, and holding quality under noisy supervision.
         </p>
-        <p>
-          I am particularly interested in diffusion language models and multimodal learning. I completed my bachelor's degree in Data Science and Artificial Intelligence at Hanoi University of Science and Technology.
+        <p class="sub-lead">
+          My current focus is diffusion language models, multimodal learning, and time series analysis.
+          I hold a bachelor's degree in Data Science and Artificial Intelligence from
+          Hanoi University of Science and Technology.
         </p>
 
-        <div class="profile-links" aria-label="Profile links">
-          <a href="mailto:dat27072002@gmail.com">Email</a>
-          <a href="https://github.com/katD2707" target="_blank" rel="noopener noreferrer">GitHub</a>
-          <a href="https://www.linkedin.com/in/%C4%91%E1%BA%A1t-nguy%E1%BB%85n-c%C3%B4ng-479453246/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-          <a href="assets/Nguyen-Cong-Dat-CV.pdf" target="_blank" rel="noopener noreferrer">CV</a>
+        <div class="pill-row" aria-label="Profile links">
+          <a class="pill pill-solid" href="mailto:dat27072002@gmail.com">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" rx="2.5"/><path d="m3.8 7 7.1 5.3a2 2 0 0 0 2.2 0L20.2 7"/></svg>
+            Email
+          </a>
+          <a class="pill" href="https://github.com/katD2707" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.36 1.09 2.94.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.5 9.5 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/></svg>
+            GitHub
+          </a>
+          <a class="pill" href="https://www.linkedin.com/in/%C4%91%E1%BA%A1t-nguy%E1%BB%85n-c%C3%B4ng-479453246/" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.5h4v11H3v-11Zm6.5 0h3.83v1.5h.05a4.2 4.2 0 0 1 3.78-2.08c4.04 0 4.79 2.66 4.79 6.12v5.46h-4v-4.84c0-1.16-.02-2.64-1.61-2.64-1.61 0-1.86 1.26-1.86 2.56v4.92h-4v-11Z"/></svg>
+            LinkedIn
+          </a>
+          <a class="pill" href="assets/Nguyen-Cong-Dat-CV.pdf" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg>
+            CV
+          </a>
         </div>
+      </div>
+
+      <div class="hero-side" data-reveal>
+        <figure class="portrait">
+          <img src="images/profile.jpg" alt="Portrait of Nguyen Cong Dat" width="863" height="1536" />
+        </figure>
+        <dl class="fact-strip">
+          <div><dt>Based in</dt><dd>Hanoi, Vietnam</dd></div>
+          <div><dt>Venues</dt><dd>ICDM · ACL · ICLR · ICCV</dd></div>
+          <div><dt>Reviewing</dt><dd>ICML &amp; NeurIPS 2026</dd></div>
+        </dl>
       </div>
     </section>
 
-    <section class="academic-section news-section" id="news" aria-labelledby="news-title">
-      <div class="section-heading">
-        <p class="section-label">Updates</p>
+    <!-- ── News ─────────────────────────────────────────────── -->
+    <section class="section" id="news" aria-labelledby="news-title">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span>Updates</p>
         <h2 id="news-title">News</h2>
       </div>
 
-      <ol class="news-list">
+      <ol class="timeline" data-reveal>
+        <li>
+          <time datetime="2026">2026</time>
+          <p><a href="https://arxiv.org/abs/2608.17164" target="_blank" rel="noopener noreferrer">ScenarioDiff</a> was accepted to <strong>ICDM 2026</strong>.</p>
+        </li>
         <li>
           <time datetime="2026">2026</time>
           <p><a href="https://arxiv.org/abs/2604.05551" target="_blank" rel="noopener noreferrer">FastDiSS</a> was accepted to <strong>Findings of ACL 2026</strong>.</p>
+        </li>
+        <li>
+          <time datetime="2026">2026</time>
+          <p>Serving as a reviewer for <strong>ICML 2026</strong> and <strong>NeurIPS 2026</strong>.</p>
         </li>
         <li>
           <time datetime="2026">2026</time>
@@ -95,140 +165,370 @@
           <time datetime="2025">2025</time>
           <p><a href="https://arxiv.org/abs/2508.19581" target="_blank" rel="noopener noreferrer">SBDC</a> was accepted to <strong>ICCV 2025</strong>.</p>
         </li>
+        <li>
+          <time datetime="2024">2024</time>
+          <p>Received the <strong>Best Presentation Award</strong> from the School of Information and Communication Technology, HUST.</p>
+        </li>
       </ol>
     </section>
 
-    <section class="academic-section research-section" id="research" aria-labelledby="research-title">
-      <div class="section-heading">
-        <p class="section-label">Research</p>
+    <!-- ── Research ─────────────────────────────────────────── -->
+    <section class="section" id="research" aria-labelledby="research-title">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span>Research</p>
         <h2 id="research-title">Current directions</h2>
-      </div>
-
-      <div class="research-intro">
-        <p>
-          My broader goal is to make generative models more practical by improving how they reason across sequences and combine information from different modalities.
+        <p class="section-intro">
+          My broader goal is to make generative models more practical: fewer sampling steps,
+          steadier behaviour under imperfect data, and representations that hold up across modalities.
         </p>
       </div>
 
-      <div class="research-topics">
-        <article>
-          <span>01</span>
-          <h3>Diffusion language models</h3>
-          <p>Few-step generation and better training&ndash;inference alignment for efficient sequence-to-sequence models.</p>
-          <figure class="direction-figure">
-            <img src="images/direction-diffusion-language-model.png" alt="Abstract progression from scattered noisy tokens to an ordered sequence" width="1536" height="1024" loading="lazy" decoding="async" />
+      <div class="topic-grid" data-reveal>
+        <article class="topic-card">
+          <figure class="topic-figure">
+            <svg viewBox="0 0 320 170" role="img" aria-label="Scattered noisy tokens resolving into an ordered sequence over denoising steps">
+              <g class="fig-faint">
+                <path d="M16 142h288" />
+                <path d="M118 28v114M206 28v114" stroke-dasharray="3 5" />
+              </g>
+              <g class="fig-noise">
+                <rect x="24" y="44" width="11" height="11" rx="2.5" transform="rotate(18 29 49)" />
+                <rect x="52" y="30" width="9" height="9" rx="2" transform="rotate(-24 56 34)" />
+                <rect x="34" y="78" width="12" height="12" rx="3" transform="rotate(35 40 84)" />
+                <rect x="72" y="60" width="10" height="10" rx="2.5" transform="rotate(-12 77 65)" />
+                <rect x="20" y="106" width="9" height="9" rx="2" transform="rotate(42 24 110)" />
+                <rect x="60" y="112" width="11" height="11" rx="2.5" transform="rotate(-33 65 117)" />
+                <rect x="88" y="94" width="9" height="9" rx="2" transform="rotate(21 92 98)" />
+                <rect x="94" y="34" width="11" height="11" rx="2.5" transform="rotate(-8 99 39)" />
+                <rect x="46" y="54" width="8" height="8" rx="2" transform="rotate(50 50 58)" />
+                <rect x="80" y="126" width="9" height="9" rx="2" transform="rotate(-18 84 130)" />
+              </g>
+              <g class="fig-mid">
+                <rect x="130" y="48" width="12" height="12" rx="3" transform="rotate(9 136 54)" />
+                <rect x="152" y="70" width="12" height="12" rx="3" transform="rotate(-6 158 76)" />
+                <rect x="132" y="94" width="12" height="12" rx="3" transform="rotate(-11 138 100)" />
+                <rect x="174" y="52" width="12" height="12" rx="3" transform="rotate(5 180 58)" />
+                <rect x="172" y="100" width="12" height="12" rx="3" transform="rotate(-4 178 106)" />
+                <rect x="152" y="26" width="11" height="11" rx="3" transform="rotate(14 157 31)" />
+              </g>
+              <g class="fig-solid">
+                <rect x="218" y="72" width="14" height="14" rx="3.5" />
+                <rect x="238" y="72" width="14" height="14" rx="3.5" />
+                <rect x="258" y="72" width="14" height="14" rx="3.5" />
+                <rect x="278" y="72" width="14" height="14" rx="3.5" />
+              </g>
+              <g class="fig-accent">
+                <rect x="218" y="72" width="14" height="14" rx="3.5" />
+                <rect x="278" y="72" width="14" height="14" rx="3.5" />
+              </g>
+              <g class="fig-line">
+                <path d="M104 100q48 34 104 -8" marker-mid="none" />
+                <path d="M196 88l10 4-9 5" />
+              </g>
+              <g class="fig-tick">
+                <circle cx="46" cy="158" r="2.4" /><circle cx="118" cy="158" r="2.4" />
+                <circle cx="206" cy="158" r="2.4" /><circle cx="285" cy="158" r="2.4" />
+              </g>
+            </svg>
           </figure>
+          <div class="topic-body">
+            <span class="topic-index">01</span>
+            <h3>Diffusion language models</h3>
+            <p>Few-step generation and tighter training–inference alignment for efficient sequence-to-sequence models.</p>
+            <ul class="tag-row"><li>few-step sampling</li><li>seq2seq</li></ul>
+          </div>
         </article>
-        <article>
-          <span>02</span>
-          <h3>Multimodal learning</h3>
-          <p>Shared representations that connect visual, textual, and temporal signals while preserving their complementary structure.</p>
-          <figure class="direction-figure">
-            <img src="images/direction-multimodal-learning.png" alt="Visual, sequential, and temporal inputs converging into a shared representation" width="1536" height="1024" loading="lazy" decoding="async" />
+
+        <article class="topic-card">
+          <figure class="topic-figure">
+            <svg viewBox="0 0 320 170" role="img" aria-label="Visual, textual and temporal inputs converging into one shared representation">
+              <g class="fig-solid">
+                <rect x="24" y="22" width="11" height="11" rx="2" /><rect x="39" y="22" width="11" height="11" rx="2" /><rect x="54" y="22" width="11" height="11" rx="2" />
+                <rect x="24" y="37" width="11" height="11" rx="2" /><rect x="39" y="37" width="11" height="11" rx="2" /><rect x="54" y="37" width="11" height="11" rx="2" />
+              </g>
+              <g class="fig-noise">
+                <rect x="24" y="74" width="44" height="7" rx="3.5" /><rect x="24" y="86" width="34" height="7" rx="3.5" /><rect x="24" y="98" width="41" height="7" rx="3.5" />
+              </g>
+              <g class="fig-line">
+                <path d="M24 138v-6M31 138v-14M38 138v-22M45 138v-11M52 138v-19M59 138v-8M66 138v-15" stroke-linecap="round" />
+              </g>
+              <g class="fig-flow">
+                <path d="M74 38q68 6 96 44" />
+                <path d="M74 89q54 0 96 -4" />
+                <path d="M74 128q68 -8 96 -40" />
+              </g>
+              <g class="fig-solid">
+                <path d="M212 50 244 68v36l-32 18-32-18V68Z" class="fig-hex" />
+              </g>
+              <g class="fig-accent">
+                <circle cx="212" cy="76" r="4" /><circle cx="202" cy="92" r="4" /><circle cx="222" cy="92" r="4" />
+              </g>
+              <g class="fig-faint"><path d="M212 76 202 92M212 76l10 16M202 92h20" /></g>
+              <g class="fig-flow"><path d="M246 86h42" /></g>
+              <g class="fig-tick"><circle cx="294" cy="86" r="3" /></g>
+            </svg>
           </figure>
+          <div class="topic-body">
+            <span class="topic-index">02</span>
+            <h3>Multimodal learning</h3>
+            <p>Shared representations that connect visual, textual, and temporal signals while preserving their complementary structure.</p>
+            <ul class="tag-row"><li>CLIP</li><li>mixture-of-experts</li></ul>
+          </div>
+        </article>
+
+        <article class="topic-card">
+          <figure class="topic-figure">
+            <svg viewBox="0 0 320 170" role="img" aria-label="An observed series branching into a fan of forecast scenarios">
+              <g class="fig-faint">
+                <path d="M16 142h288M16 28v114" />
+                <path d="M170 28v114" stroke-dasharray="3 5" />
+              </g>
+              <path class="fig-cone" d="M170 86 304 34v104Z" />
+              <g class="fig-flow">
+                <path d="M172 84q40 -24 62 -18t68 -26" />
+                <path d="M172 86q44 8 62 26t68 10" />
+              </g>
+              <path class="fig-series" d="M22 104l16-14 15 20 16-26 15 12 16-22 15 18 16-16 15 14 16-6" />
+              <path class="fig-series fig-series-fore" d="M172 84q38 -6 62 6t68 -22" stroke-dasharray="4 4" />
+              <g class="fig-accent"><circle cx="170" cy="85" r="4.5" /></g>
+              <g class="fig-tick">
+                <circle cx="302" cy="34" r="2.6" /><circle cx="302" cy="68" r="2.6" /><circle cx="302" cy="112" r="2.6" />
+              </g>
+            </svg>
+          </figure>
+          <div class="topic-body">
+            <span class="topic-index">03</span>
+            <h3>Time series analysis</h3>
+            <p>Scenario-level guidance and terminal-step behaviour in diffusion forecasters, where denoising can work against the signal.</p>
+            <ul class="tag-row"><li>forecasting</li><li>guidance</li></ul>
+          </div>
         </article>
       </div>
     </section>
 
-    <section class="academic-section publications-section" id="publications" aria-labelledby="publications-title">
-      <div class="section-heading publications-heading">
-        <p class="section-label">Research output</p>
-        <div class="publications-title-row">
-          <h2 id="publications-title">Selected publications</h2>
-          <p class="authorship-note"><span class="author-mark">Dat Nguyen Cong</span> denotes my authorship.</p>
-        </div>
+    <!-- ── Publications ─────────────────────────────────────── -->
+    <section class="section" id="publications" aria-labelledby="publications-title">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span>Research output</p>
+        <h2 id="publications-title">Publications</h2>
+        <p class="section-intro">
+          <span class="author-mark">Bold</span> marks my name; <span class="eq-mark">*</span> denotes equal contribution.
+        </p>
       </div>
 
-      <ol class="publication-list">
-        <li class="publication">
-          <div class="venue-year"><strong>ACL</strong><span>2026</span></div>
-          <div class="publication-details">
-            <h3><a href="https://arxiv.org/abs/2604.05551" target="_blank" rel="noopener noreferrer">FastDiSS: Few-step Match Many-step Diffusion Language Model on Sequence-to-Sequence Generation</a></h3>
-            <p class="authors"><span class="author-mark">Dat Nguyen Cong</span>, Tung Kieu, Hoang Thanh-Tung</p>
-            <p class="venue-name">Findings of the Association for Computational Linguistics, 2026</p>
-            <div class="publication-links"><a href="https://arxiv.org/abs/2604.05551" target="_blank" rel="noopener noreferrer">paper</a></div>
-            <figure class="publication-pipeline">
-              <a href="images/Pipeline_fastdiss.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open the full FastDiSS pipeline as a PDF">
-                <img src="images/pipeline_fastdiss.png" alt="FastDiSS pipeline matching few-step and many-step diffusion language generation" width="1000" height="443" loading="lazy" decoding="async" />
-              </a>
-              <figcaption>FastDiSS method overview. <a href="images/Pipeline_fastdiss.pdf" target="_blank" rel="noopener noreferrer">View full-size pipeline</a></figcaption>
-            </figure>
+      <ol class="pub-list" data-reveal>
+        <li class="pub">
+          <div class="pub-head">
+            <span class="venue-pill">ICDM</span>
+            <span class="pub-year">2026</span>
+            <span class="pub-rule" aria-hidden="true"></span>
+            <div class="pub-links">
+              <a href="https://arxiv.org/abs/2608.17164" target="_blank" rel="noopener noreferrer">arXiv</a>
+            </div>
           </div>
+          <h3><a href="https://arxiv.org/abs/2608.17164" target="_blank" rel="noopener noreferrer">ScenarioDiff: A Scenario-level Guidance Framework for Multimodal Time Series Forecasting</a></h3>
+          <p class="authors">Tuan-Binh Tran<span class="eq-mark">*</span>, <span class="author-mark">Dat Nguyen-Cong</span><span class="eq-mark">*</span>, Duc-Trong Le, Thanh Trung Huynh, Tung Kieu</p>
+          <p class="venue-name">IEEE International Conference on Data Mining, 2026</p>
+          <ul class="tag-row"><li>time series</li><li>multimodal</li><li>guidance</li></ul>
         </li>
 
-        <li class="publication">
-          <div class="venue-year"><strong>ICCV</strong><span>2025</span></div>
-          <div class="publication-details">
-            <h3><a href="https://arxiv.org/abs/2508.19581" target="_blank" rel="noopener noreferrer">Guiding Noisy Label Diffusion Models with Score-based Discriminator Correction</a></h3>
-            <p class="authors"><span class="author-mark">Dat Nguyen Cong</span>, Hieu Tran Bao, Hoang Thanh-Tung</p>
-            <p class="venue-name">IEEE International Conference on Computer Vision, 2025</p>
-            <div class="publication-links"><a href="https://arxiv.org/abs/2508.19581" target="_blank" rel="noopener noreferrer">paper</a></div>
-            <figure class="publication-pipeline">
-              <a href="images/pipeline_sbdc.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open the discriminator-correction pipeline as a PDF">
-                <img src="images/pipeline_sbdc.png" alt="Pipeline for correcting a noisy-label diffusion model using a score-based discriminator" width="2100" height="799" loading="lazy" decoding="async" />
-              </a>
-              <figcaption>Score-based discriminator correction overview. <a href="images/pipeline_sbdc.pdf" target="_blank" rel="noopener noreferrer">View full-size pipeline</a></figcaption>
-            </figure>
+        <li class="pub">
+          <div class="pub-head">
+            <span class="venue-pill">ACL</span>
+            <span class="pub-year">2026</span>
+            <span class="pub-rule" aria-hidden="true"></span>
+            <div class="pub-links">
+              <a href="https://arxiv.org/abs/2604.05551" target="_blank" rel="noopener noreferrer">arXiv</a>
+            </div>
           </div>
+          <h3><a href="https://arxiv.org/abs/2604.05551" target="_blank" rel="noopener noreferrer">FastDiSS: Few-step Match Many-step Diffusion Language Model on Sequence-to-Sequence Generation</a></h3>
+          <p class="authors"><span class="author-mark">Dat Nguyen-Cong</span>, Tung Kieu, Hoang Thanh-Tung</p>
+          <p class="venue-name">Findings of the Association for Computational Linguistics, 2026</p>
+          <ul class="tag-row"><li>diffusion LM</li><li>few-step sampling</li></ul>
+          <figure class="pipeline">
+            <a href="images/Pipeline_fastdiss.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open the full FastDiSS pipeline as a PDF">
+              <img src="images/pipeline_fastdiss.png" alt="FastDiSS pipeline matching few-step and many-step diffusion language generation" width="1000" height="443" loading="lazy" decoding="async" />
+            </a>
+            <figcaption>Method overview · <a href="images/Pipeline_fastdiss.pdf" target="_blank" rel="noopener noreferrer">full-size PDF</a></figcaption>
+          </figure>
         </li>
 
-        <li class="publication">
-          <div class="venue-year"><strong>ICLR</strong><span>2026</span></div>
-          <div class="publication-details">
-            <h3><a href="https://openreview.net/forum?id=RErUA45pI9" target="_blank" rel="noopener noreferrer">CLIP-FMoE: Scalable CLIP via Fused Mixture-of-Experts with Enforced Specialization</a></h3>
-            <p class="authors">Luong Tran, Lan-Cuong Nguyen, Huynh Dang Nguyen, <span class="author-mark">Dat Nguyen Cong</span>, Dung D. Le, Van Nguyen</p>
-            <p class="venue-name">International Conference on Learning Representations, 2026</p>
-            <div class="publication-links"><a href="https://openreview.net/forum?id=RErUA45pI9" target="_blank" rel="noopener noreferrer">paper</a></div>
-            <figure class="publication-pipeline">
-              <a href="images/pipeline_clipfmoe.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open the CLIP-FMoE pipeline as a PDF">
-                <img src="images/pipeline_clipfmoe.png" alt="CLIP-FMoE pipeline with semantic clustering and specialized fused mixture-of-experts training" width="4170" height="1615" loading="lazy" decoding="async" />
-              </a>
-              <figcaption>CLIP-FMoE method overview. <a href="images/pipeline_clipfmoe.pdf" target="_blank" rel="noopener noreferrer">View full-size pipeline</a></figcaption>
-            </figure>
+        <li class="pub">
+          <div class="pub-head">
+            <span class="venue-pill">ICLR</span>
+            <span class="pub-year">2026</span>
+            <span class="pub-rule" aria-hidden="true"></span>
+            <div class="pub-links">
+              <a href="https://openreview.net/forum?id=RErUA45pI9" target="_blank" rel="noopener noreferrer">OpenReview</a>
+            </div>
           </div>
+          <h3><a href="https://openreview.net/forum?id=RErUA45pI9" target="_blank" rel="noopener noreferrer">CLIP-FMoE: Scalable CLIP via Fused Mixture-of-Experts with Enforced Specialization</a></h3>
+          <p class="authors">Luong Tran, Lan-Cuong Nguyen, Huynh Dang Nguyen, <span class="author-mark">Dat Nguyen-Cong</span>, Dung D. Le, Van Nguyen</p>
+          <p class="venue-name">International Conference on Learning Representations, 2026</p>
+          <ul class="tag-row"><li>CLIP</li><li>mixture-of-experts</li><li>scaling</li></ul>
+          <figure class="pipeline">
+            <a href="images/pipeline_clipfmoe.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open the CLIP-FMoE pipeline as a PDF">
+              <img src="images/pipeline_clipfmoe.png" alt="CLIP-FMoE pipeline with semantic clustering and specialized fused mixture-of-experts training" width="2400" height="929" loading="lazy" decoding="async" />
+            </a>
+            <figcaption>Method overview · <a href="images/pipeline_clipfmoe.pdf" target="_blank" rel="noopener noreferrer">full-size PDF</a></figcaption>
+          </figure>
+        </li>
+
+        <li class="pub">
+          <div class="pub-head">
+            <span class="venue-pill">ICCV</span>
+            <span class="pub-year">2025</span>
+            <span class="pub-rule" aria-hidden="true"></span>
+            <div class="pub-links">
+              <a href="https://arxiv.org/abs/2508.19581" target="_blank" rel="noopener noreferrer">arXiv</a>
+            </div>
+          </div>
+          <h3><a href="https://arxiv.org/abs/2508.19581" target="_blank" rel="noopener noreferrer">Guiding Noisy Label Diffusion Models with Score-based Discriminator Correction</a></h3>
+          <p class="authors"><span class="author-mark">Dat Nguyen-Cong</span>, Hieu Tran Bao, Hoang Thanh-Tung</p>
+          <p class="venue-name">IEEE/CVF International Conference on Computer Vision, 2025</p>
+          <ul class="tag-row"><li>diffusion</li><li>noisy labels</li><li>guidance</li></ul>
+          <figure class="pipeline">
+            <a href="images/pipeline_sbdc.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open the discriminator-correction pipeline as a PDF">
+              <img src="images/pipeline_sbdc.png" alt="Pipeline for correcting a noisy-label diffusion model using a score-based discriminator" width="1800" height="685" loading="lazy" decoding="async" />
+            </a>
+            <figcaption>Method overview · <a href="images/pipeline_sbdc.pdf" target="_blank" rel="noopener noreferrer">full-size PDF</a></figcaption>
+          </figure>
         </li>
       </ol>
 
-      <div class="ongoing-work">
-        <h3>Ongoing work</h3>
-        <ul>
-          <li><strong>ScenarioDiff:</strong> A Scenario-level Guidance Framework for Multimodal Time Series Forecasting. <span>Under review.</span></li>
-          <li><a href="https://arxiv.org/abs/2502.10954" target="_blank" rel="noopener noreferrer"><strong>Learning to Stop Overthinking at Test Time.</strong></a> <span>Preprint.</span></li>
+      <div class="subsection" data-reveal>
+        <h3 class="subsection-title">Preprints &amp; under review</h3>
+        <ul class="preprint-list">
+          <li>
+            <span class="status-pill">Under review</span>
+            <p><a href="https://arxiv.org/abs/2608.14067" target="_blank" rel="noopener noreferrer">When Denoising Hurts: Rethinking the Terminal Step of Diffusion Time Series Forecasters</a></p>
+            <p class="authors"><span class="author-mark">Dat Nguyen-Cong</span>, Luong Tran, Tung Kieu</p>
+          </li>
+          <li>
+            <span class="status-pill">Under review</span>
+            <p>Balancing Fidelity and Diversity of Synthetic Data Representations in CLIP-based Few-Shot Learning</p>
+            <p class="authors">Thanh Duc Pham, Lan-Cuong Nguyen, <span class="author-mark">Dat Nguyen-Cong</span>, Dung D. Le, Minh-Tan Pham</p>
+          </li>
+          <li>
+            <span class="status-pill">Preprint</span>
+            <p><a href="https://arxiv.org/abs/2502.10954" target="_blank" rel="noopener noreferrer">Learning to Stop Overthinking at Test Time</a></p>
+            <p class="authors">Hieu Tran Bao<span class="eq-mark">*</span>, <span class="author-mark">Nguyen Cong Dat</span><span class="eq-mark">*</span>, Nguyen Duc Anh, Hoang Thanh-Tung</p>
+          </li>
+          <li>
+            <span class="status-pill">Submitted</span>
+            <p>On the Effect of Noisy Data in Diffusion Models</p>
+            <p class="authors"><span class="author-mark">Dat Nguyen-Cong</span>, Hoang Thanh-Tung</p>
+          </li>
         </ul>
       </div>
     </section>
 
-    <section class="academic-section background-section" id="background" aria-labelledby="background-title">
-      <div class="section-heading">
-        <p class="section-label">Background</p>
-        <h2 id="background-title">Appointments &amp; education</h2>
+    <!-- ── Background ───────────────────────────────────────── -->
+    <section class="section section-last" id="background" aria-labelledby="background-title">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span>Background</p>
+        <h2 id="background-title">Experience &amp; education</h2>
       </div>
 
-      <div class="background-list">
-        <article>
-          <time>2023—2026</time>
-          <div><h3>AI Research Resident</h3><p>FPT Software AI Center, Hanoi</p></div>
-        </article>
-        <article>
-          <time>2021—2024</time>
-          <div><h3>Research Assistant</h3><p>Data Science Laboratory, BKAI, HUST · Advisors: Khoat Than and Tung Doan</p></div>
-        </article>
-        <article>
-          <time>2020—2024</time>
-          <div><h3>B.A. in Data Science and Artificial Intelligence</h3><p>Hanoi University of Science and Technology · GPA: 3.8/4.0</p></div>
-        </article>
+      <div class="cv-grid" data-reveal>
+        <div class="cv-block">
+          <h3 class="subsection-title">Appointments</h3>
+          <ol class="entry-list">
+            <li>
+              <time>Aug 2023 — Aug 2026</time>
+              <div>
+                <h4>AI Research Resident</h4>
+                <p>FPT Software AI Center · Hanoi</p>
+              </div>
+            </li>
+            <li>
+              <time>Dec 2021 — Aug 2024</time>
+              <div>
+                <h4>Research Assistant</h4>
+                <p>Data Science Laboratory, BKAI, HUST · Advisors: Khoat Than and Tung Doan</p>
+              </div>
+            </li>
+            <li>
+              <time>Jun 2023 — Feb 2024</time>
+              <div>
+                <h4>AI Engineer Intern</h4>
+                <p>FPT Camera, FPT Telecom · Hanoi</p>
+              </div>
+            </li>
+          </ol>
+
+          <h3 class="subsection-title">Education</h3>
+          <ol class="entry-list">
+            <li>
+              <time>Oct 2020 — Oct 2024</time>
+              <div>
+                <h4>B.A. in Data Science and Artificial Intelligence</h4>
+                <p>Hanoi University of Science and Technology · GPA 3.8 / 4.0</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+
+        <div class="cv-block">
+          <h3 class="subsection-title">Awards</h3>
+          <ol class="entry-list entry-list-tight">
+            <li>
+              <time>2024</time>
+              <div>
+                <h4>Best Presentation Award</h4>
+                <p>School of Information and Communication Technology, HUST</p>
+              </div>
+            </li>
+            <li>
+              <time>2019</time>
+              <div>
+                <h4>Third Prize, Vietnamese National Olympiad in Physics</h4>
+                <p>Tran Phu High School for the Gifted</p>
+              </div>
+            </li>
+            <li>
+              <time>2019</time>
+              <div>
+                <h4>Gold Medal, Regional Physics Contest</h4>
+                <p>Coastal and Northern Delta Areas</p>
+              </div>
+            </li>
+          </ol>
+
+          <h3 class="subsection-title">Talks</h3>
+          <ol class="entry-list entry-list-tight">
+            <li>
+              <time>2026</time>
+              <div><h4>FastDiSS</h4><p>Poster presentation · ACL 2026</p></div>
+            </li>
+            <li>
+              <time>2025</time>
+              <div><h4>Score-based Discriminator Correction</h4><p>Poster presentation · ICCV 2025</p></div>
+            </li>
+          </ol>
+        </div>
       </div>
 
-      <p class="service"><strong>Academic service:</strong> Reviewer for ICML 2026 and NeurIPS 2026.</p>
+      <dl class="meta-strip" data-reveal>
+        <div><dt>Service</dt><dd>Reviewer — ICML 2026, NeurIPS 2026</dd></div>
+        <div><dt>Languages</dt><dd>Vietnamese (native) · English (IELTS 7.0)</dd></div>
+        <div><dt>Tools</dt><dd>Python · PyTorch · Hugging Face</dd></div>
+      </dl>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div>
-      <p>Nguyen Cong Dat</p>
-      <a href="mailto:dat27072002@gmail.com">dat27072002@gmail.com</a>
+    <div class="footer-inner">
+      <div>
+        <p class="footer-name">Nguyen Cong Dat</p>
+        <p class="footer-links">
+          <a href="mailto:dat27072002@gmail.com">dat27072002@gmail.com</a>
+          <span aria-hidden="true">·</span>
+          <a href="mailto:datnc13@fpt.com">datnc13@fpt.com</a>
+        </p>
+      </div>
+      <p class="footer-meta">Last updated September 2026 · <a href="#about">Back to top</a></p>
     </div>
-    <p>Last updated August 2026 · <a href="#about">Back to top</a></p>
   </footer>
 
   <script src="script.js" defer></script>
